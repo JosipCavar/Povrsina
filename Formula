@@ -1,0 +1,12 @@
+def povrsina_poligona(koordinate):
+    n = len(koordinate)
+    povrsina = 0
+    for i in range(n):
+        x1, y1 = koordinate[i]
+        x2, y2 = koordinate[(i + 1) % n]
+        povrsina += x1 * y2 - x2 * y1
+    return abs(povrsina) / 2
+
+koordinate = [(1, 1), (4, 1), (4, 5), (1, 5)]
+
+print(f'Površina poligona: {povrsina_poligona(koordinate)}')
