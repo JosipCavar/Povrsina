@@ -1,3 +1,5 @@
+import csv
+
 def povrsina_poligona(koordinate):
     n = len(koordinate)
     povrsina = 0
@@ -7,6 +9,18 @@ def povrsina_poligona(koordinate):
         povrsina += x1 * y2 - x2 * y1
     return abs(povrsina) / 2
 
-koordinate = [(1, 1), (4, 1), (4, 5), (1, 5)]
+def ucitaj_koordinate(ime_datoteke):
+    koordinate = []
+    with open(ime_datoteke, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            x, y = map(float, row)
+            koordinate.append((x, y))
+    return koordinate
 
+# Učitaj koordinate iz datoteke
+ime_datoteke = 'koordinate.csv'
+koordinate = ucitaj_koordinate(ime_datoteke)
+
+# Izračun površine poligona
 print(f'Površina poligona: {povrsina_poligona(koordinate)}')
