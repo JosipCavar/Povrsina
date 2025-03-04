@@ -1,0 +1,17 @@
+function povrsinaPoligona(koordinate: [number, number][]): number {
+    let n = koordinate.length;
+    let povrsina = 0;
+    for (let i = 0; i < n; i++) {
+        let [x1, y1] = koordinate[i];
+        let [x2, y2] = koordinate[(i + 1) % n];
+        povrsina += x1 * y2 - x2 * y1;
+    }
+    return Math.abs(povrsina) / 2;
+}
+
+function izracunajPovrsinu(koordinate: [number, number][]): number | string {
+    if (!koordinate || koordinate.length < 3) {
+        return "Poligon mora imati najmanje 3 koordinate.";
+    }
+    return povrsinaPoligona(koordinate);
+}
