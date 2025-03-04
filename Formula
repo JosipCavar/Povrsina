@@ -9,4 +9,5 @@ def povrsina_poligona(koordinate):
 
 def izracunaj_povrsinu(koordinate):
     if not koordinate or len(koordinate) < 3:
-        return "Poligon mora imati najmanje 3 kordinate"
+        return "Poligon mora imati najmanje 3 koordinate."
+    return povrsina_poligona(koordinate)
